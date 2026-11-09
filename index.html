@@ -3,223 +3,364 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PIXELPULSE – Gaming Gear</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 :root {
-  --bg:#090b18;
-  --panel:#151a31;
-  --text:#f7f8ff;
-  --muted:#b6bdd7;
-  --cyan:#45e7ff;
-  --pink:#ff4fd8;
-  --lime:#c5ff62;
+  --bg: #f7f7fc;
+  --white: #ffffff;
+  --text: #17182b;
+  --muted: #777b91;
+  --purple: #7657ed;
+  --blue: #6195ff;
 }
 
-* {box-sizing:border-box}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  margin:0;
-  background:
-    radial-gradient(ellipse at 10% 0%,#33205b,transparent 40%),
-    radial-gradient(ellipse at 90% 20%,#124458,transparent 35%),
-    var(--bg);
-  color:var(--text);
-  font-family:Arial,sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .wrap {
-  width:min(1100px,92%);
-  margin:auto;
+  width: min(1150px, 90%);
+  margin: auto;
 }
+
+/* NAVIGATION */
 
 header {
-  padding:24px 0;
-  border-bottom:1px solid #ffffff22;
+  background: rgba(255,255,255,.85);
+  border-bottom: 1px solid #eeeeF5;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(15px);
 }
 
-.brand {
-  font-weight:900;
-  font-size:26px;
-  letter-spacing:1px;
+nav {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.brand span {color:var(--cyan)}
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--purple);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #64677b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* HERO */
 
 .hero {
-  padding:75px 0 55px;
+  padding: 95px 0 85px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 20% 30%, #e5e0ff 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 10%, #dceaff 0%, transparent 45%);
 }
 
-.eyebrow {
-  color:var(--lime);
-  font-weight:bold;
-  letter-spacing:2px;
-  font-size:13px;
+.label {
+  display: inline-block;
+  background: #ece8ff;
+  color: var(--purple);
+  padding: 9px 17px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 .hero h1 {
-  font-size:clamp(42px,7vw,76px);
-  line-height:1.05;
-  margin:18px 0;
+  font-size: clamp(42px, 7vw, 76px);
+  letter-spacing: -4px;
+  line-height: 1.08;
+  margin: 25px 0 18px;
+  font-weight: 900;
 }
 
-.gradient {
-  background:linear-gradient(
-    90deg,var(--cyan),#a78bfa,var(--pink)
-  );
-  color:transparent;
-  background-clip:text;
+.hero h1 span {
+  background: linear-gradient(90deg, #7657ed, #579eff);
+  color: transparent;
+  background-clip: text;
 }
 
 .hero p {
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.7;
-  max-width:650px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 570px;
+  margin: auto;
 }
 
-section {padding:25px 0 70px}
+/* PRODUCTS */
 
-h2 {font-size:34px}
+.products {
+  padding: 75px 0;
+}
+
+.section-top {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-top h2 {
+  font-size: 35px;
+  letter-spacing: -1.5px;
+  margin: 15px 0 10px;
+}
+
+.section-top p {
+  color: var(--muted);
+  font-size: 14px;
+}
 
 .grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .card {
-  background:linear-gradient(155deg,#1b2140,#111529);
-  border:1px solid #ffffff22;
-  border-radius:20px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  transition:.3s;
+  background: white;
+  border: 1px solid #ececf4;
+  border-radius: 22px;
+  overflow: hidden;
+  transition: .3s;
+  box-shadow: 0 8px 30px #22203b08;
 }
 
 .card:hover {
-  transform:translateY(-7px);
-  border-color:var(--cyan);
-  box-shadow:0 12px 35px #0008;
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px #5142a51b;
 }
 
-.art {
-  height:230px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  background:
-    radial-gradient(ellipse at center,#26365b,#101426 75%);
-  border-bottom:1px solid #ffffff15;
+/* ORIGINAL PRODUCT ILLUSTRATIONS */
+
+.visual {
+  height: 235px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
 }
 
-.art img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:24px;
-  transition:transform .3s;
+.visual.one {
+  background: linear-gradient(135deg,#e9e5ff,#dbe8ff);
 }
 
-.card:hover .art img {
-  transform:scale(1.06);
+.visual.two {
+  background: linear-gradient(135deg,#e5edff,#e9e4ff);
 }
 
-.tag {
-  position:absolute;
-  top:14px;
-  left:14px;
-  z-index:2;
-  background:#080b1cdd;
-  border:1px solid #ffffff44;
-  border-radius:20px;
-  padding:8px 12px;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:1px;
+.visual.three {
+  background: linear-gradient(135deg,#e7e4ff,#d9eaff);
 }
 
-.body {
-  padding:22px;
-  display:flex;
-  flex-direction:column;
-  flex:1;
+.keyboard {
+  width: 100%;
+  max-width: 290px;
+  padding: 13px;
+  border-radius: 13px;
+  background: linear-gradient(145deg,#30334b,#171a2c);
+  box-shadow: 0 18px 28px #22234435;
+  transform: rotate(-5deg);
+  transition: .35s;
+}
+
+.card:hover .keyboard {
+  transform: rotate(-2deg) scale(1.04);
+}
+
+.visual.two .keyboard {
+  transform: rotate(3deg);
+  background: linear-gradient(145deg,#42445e,#22243b);
+}
+
+.card:hover .visual.two .keyboard {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.visual.three .keyboard {
+  transform: rotate(-3deg);
+  background: linear-gradient(145deg,#25283d,#101323);
+}
+
+.card:hover .visual.three .keyboard {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  gap: 4px;
+}
+
+.key {
+  height: 17px;
+  border-radius: 3px;
+  background: #555971;
+  box-shadow: inset 0 -2px 0 #292c40;
+}
+
+.one .key:nth-child(3n) {
+  background: #8a78f2;
+}
+
+.two .key:nth-child(4n) {
+  background: #65b4fa;
+}
+
+.three .key:nth-child(3n) {
+  background: #d18bff;
+}
+
+.space {
+  grid-column: span 4;
+}
+
+.visual-label {
+  position: absolute;
+  bottom: 15px;
+  right: 17px;
+  font-size: 10px;
+  color: #666b8b;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* CARD CONTENT */
+
+.content {
+  padding: 23px;
 }
 
 .category {
-  font-size:12px;
-  color:var(--cyan);
-  font-weight:bold;
-  text-transform:uppercase;
-  letter-spacing:1px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--purple);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-h3 {
-  margin:12px 0;
-  font-size:21px;
+.content h3 {
+  font-size: 20px;
+  margin: 11px 0;
+  letter-spacing: -.5px;
 }
 
-.body p {
-  color:var(--muted);
-  line-height:1.6;
-  flex:1;
+.description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  min-height: 66px;
 }
 
 .price {
-  font-weight:bold;
-  margin:12px 0 17px;
+  margin: 20px 0;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .price small {
-  display:block;
-  color:var(--muted);
-  font-weight:normal;
-  margin-top:5px;
+  display: block;
+  color: #999bad;
+  font-weight: 400;
+  margin-top: 5px;
 }
 
 .buy {
-  display:block;
-  text-align:center;
-  padding:14px;
-  border-radius:11px;
-  background:linear-gradient(
-    90deg,var(--cyan),#a78bfa,var(--pink)
-  );
-  color:#090b18;
-  font-weight:bold;
-  text-decoration:none;
-  transition:.2s;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #7657ed;
+  color: white;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .2s;
 }
 
-.buy:hover {opacity:.8}
-
-.notice {
-  margin-top:30px;
-  padding:20px;
-  border:1px solid #ffffff22;
-  border-radius:14px;
-  color:var(--muted);
-  line-height:1.7;
-  font-size:14px;
+.buy:hover {
+  background: #6042d6;
+  transform: translateY(-2px);
 }
 
-.notice strong {color:white}
+/* INFO */
+
+.info {
+  background: white;
+  border: 1px solid #ececf4;
+  border-radius: 18px;
+  padding: 25px;
+  margin-top: 35px;
+}
+
+.info h3 {
+  font-size: 15px;
+  margin-bottom: 9px;
+}
+
+.info p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* FOOTER */
 
 footer {
-  padding:30px 0;
-  border-top:1px solid #ffffff22;
-  color:var(--muted);
-  font-size:13px;
+  background: white;
+  border-top: 1px solid #eeeeF5;
+  padding: 30px 0;
+  text-align: center;
+  color: #999bad;
+  font-size: 12px;
 }
 
 @media(max-width:850px) {
-  .grid {grid-template-columns:1fr}
-  .hero {padding:50px 0 35px}
-  .art {height:240px}
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: auto;
+  }
+
+  .hero {
+    padding: 70px 0;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .products {
+    padding: 50px 0;
+  }
 }
 </style>
 </head>
@@ -227,182 +368,229 @@ footer {
 <body>
 
 <header>
-  <div class="wrap brand">
-    PIXEL<span>PULSE</span> ✦
-  </div>
+  <nav class="wrap">
+    <div class="logo">PIXEL<span>PULSE.</span></div>
+    <a href="#produkte" class="nav-link">Produkte entdecken ↓</a>
+  </nav>
 </header>
 
-<main class="wrap">
+<main>
 
 <div class="hero">
-  <div class="eyebrow">⚡ TECH • GAMING • GEAR</div>
+  <div class="wrap">
+    <span class="label">✦ THE GAMING COLLECTION</span>
 
-  <h1>
-    Upgrade deinen<br>
-    <span class="gradient">Game.</span>
-  </h1>
+    <h1>
+      Find your next<br>
+      <span>Gaming Setup.</span>
+    </h1>
 
-  <p>
-    Entdecke Gaming-Tastaturen für jedes Setup.
-    Von günstigen Einsteigermodellen bis zu
-    leistungsstarken Premium-Keyboards.
-  </p>
+    <p>
+      Entdecke ausgewählte Gaming-Tastaturen.
+      Vergleiche verschiedene Modelle und finde
+      das passende Keyboard für dein Setup.
+    </p>
+  </div>
 </div>
 
-<section>
+<section class="products wrap" id="produkte">
 
-<div class="eyebrow">DIE AUSWAHL</div>
-<h2>Gaming-<span class="gradient">Tastaturen</span></h2>
+  <div class="section-top">
+    <span class="label">OUR SELECTION</span>
+    <h2>Unsere <span style="color:#7657ed">Tastaturen.</span></h2>
+    <p>Drei Modelle. Drei Preisklassen. Dein nächstes Setup.</p>
+  </div>
 
-<div class="grid">
+  <div class="grid">
 
-<!-- URAGE -->
+    <!-- URAGE -->
 
-<article class="card">
+    <article class="card">
 
-<div class="art">
-  <span class="tag">EINSTEIGER</span>
+      <div class="visual one">
+        <div class="keyboard">
+          <div class="keys">
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-  <img
-    src="https://www.urage.com/media/catalog/product/cache/aa9eb1c60ab2274bc01e09df5f7dbe45/0/0/00186012awx.jpg"
-    alt="uRage Exodus 900 Blue"
-    loading="lazy">
-</div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-<div class="body">
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-<div class="category">Ca. 30–50 €</div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key space"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+          </div>
+        </div>
+        <span class="visual-label">PIXELPULSE DESIGN</span>
+      </div>
 
-<h3>uRage Exodus 900 Blue</h3>
+      <div class="content">
+        <div class="category">01 / Einsteiger</div>
+        <h3>uRage Exodus 900 Blue</h3>
+        <p class="description">
+          Ein preisbewusstes Modell für den Einstieg
+          in die Welt der Gaming-Tastaturen.
+        </p>
 
-<p>
-Eine preisbewusste Einstiegsmöglichkeit.
-Mit mechanischen Blue Switches und RGB-Beleuchtung.
-Prüfe vor dem Kauf die genaue Modellvariante.
-</p>
+        <div class="price">
+          Ca. 30–50 €
+          <small>Preis beim Händler prüfen</small>
+        </div>
 
-<div class="price">
-Aktuellen Preis ansehen
-<small>Preis kann sich ändern</small>
-</div>
+        <a class="buy" href="DEIN_AFFILIATE_LINK_1"
+        target="_blank" rel="sponsored nofollow noopener">
+          Angebot ansehen ↗
+        </a>
+      </div>
 
-<a class="buy"
-href="DEIN_AFFILIATE_LINK_1"
-target="_blank"
-rel="sponsored nofollow noopener">
-Zum Angebot ↗
-</a>
+    </article>
 
-</div>
-</article>
+    <!-- ENDORFY -->
 
-<!-- ENDORFY -->
+    <article class="card">
 
-<article class="card">
+      <div class="visual two">
+        <div class="keyboard">
+          <div class="keys">
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-<div class="art">
-  <span class="tag">PREIS-LEISTUNG</span>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-  <img
-    src="https://static01.galaxus.com/productimages/4/3/6/8/0/2/5/7/4/6/9/2/0/8/4/2/8/1/5/01a0bfeb-72bc-76d7-ba5f-34eb4d8a1132_720.jpeg"
-    alt="ENDORFY Celeris 1800"
-    loading="lazy">
-</div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-<div class="body">
+            <div class="key"></div><div class="key"></div>
+            <div class="key space"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+          </div>
+        </div>
+        <span class="visual-label">PIXELPULSE DESIGN</span>
+      </div>
 
-<div class="category">Ca. 50–100 €</div>
+      <div class="content">
+        <div class="category">02 / Preis-Leistung</div>
+        <h3>ENDORFY Celeris 1800</h3>
+        <p class="description">
+          Eine interessante Mittelklasse-Option
+          für ein modernes Gaming-Setup.
+        </p>
 
-<h3>ENDORFY Celeris 1800</h3>
+        <div class="price">
+          Ca. 50–100 €
+          <small>Preis beim Händler prüfen</small>
+        </div>
 
-<p>
-Eine Option für die Mittelklasse.
-Vergleiche Größe, Anschlüsse, Switches
-und deutsches QWERTZ-Layout.
-</p>
+        <a class="buy" href="DEIN_AFFILIATE_LINK_2"
+        target="_blank" rel="sponsored nofollow noopener">
+          Angebot ansehen ↗
+        </a>
+      </div>
 
-<div class="price">
-Aktuellen Preis ansehen
-<small>Preis kann sich ändern</small>
-</div>
+    </article>
 
-<a class="buy"
-href="DEIN_AFFILIATE_LINK_2"
-target="_blank"
-rel="sponsored nofollow noopener">
-Zum Angebot ↗
-</a>
+    <!-- CORSAIR -->
 
-</div>
-</article>
+    <article class="card">
 
-<!-- CORSAIR -->
+      <div class="visual three">
+        <div class="keyboard">
+          <div class="keys">
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-<article class="card">
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-<div class="art">
-  <span class="tag">PREMIUM</span>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
 
-  <img
-    src="https://assets.corsair.com/image/upload/c_pad,q_85,h_1100,w_1100,f_auto/products/Gaming-Keyboards/CH-912A01A-DE/Gallery/K100_RGB_RENDER_DE_CH-912A01A-DE.webp"
-    alt="Corsair K100 RGB"
-    loading="lazy">
-</div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key space"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+          </div>
+        </div>
+        <span class="visual-label">PIXELPULSE DESIGN</span>
+      </div>
 
-<div class="body">
+      <div class="content">
+        <div class="category">03 / Premium</div>
+        <h3>Corsair K100 RGB</h3>
+        <p class="description">
+          Ein umfangreich ausgestattetes Premium-
+          Keyboard mit RGB-Beleuchtung.
+        </p>
 
-<div class="category">Ca. 100–200 €+</div>
+        <div class="price">
+          Ca. 100–200 €+
+          <small>Preis beim Händler prüfen</small>
+        </div>
 
-<h3>Corsair K100 RGB</h3>
+        <a class="buy" href="DEIN_AFFILIATE_LINK_3"
+        target="_blank" rel="sponsored nofollow noopener">
+          Angebot ansehen ↗
+        </a>
+      </div>
 
-<p>
-Eine umfangreich ausgestattete Gaming-Tastatur
-mit RGB-Beleuchtung und zusätzlichen
-Bedienelementen.
-</p>
+    </article>
 
-<div class="price">
-Aktuellen Preis ansehen
-<small>Preis kann sich ändern</small>
-</div>
+  </div>
 
-<a class="buy"
-href="DEIN_AFFILIATE_LINK_3"
-target="_blank"
-rel="sponsored nofollow noopener">
-Zum Angebot ↗
-</a>
-
-</div>
-</article>
-
-</div>
-
-<div class="notice">
-
-<strong>Affiliate-Hinweis:</strong>
-Einige Links können Affiliate-Links sein.
-Wenn du über solche Links einkaufst,
-kann PixelPulse eine Provision erhalten.
-Für dich entstehen dadurch grundsätzlich
-keine zusätzlichen Kosten.
-
-<br><br>
-
-<strong>Hinweis:</strong>
-Preise und Verfügbarkeit können sich ändern.
-Produktbilder und ihre Nutzungsrechte vor
-der Veröffentlichung prüfen.
-
-</div>
+  <div class="info">
+    <h3>Affiliate-Hinweis</h3>
+    <p>
+      Einige Links können Affiliate-Links sein.
+      Wenn du über diese Links einkaufst, kann
+      PIXELPULSE eine Provision erhalten.
+      Für dich entstehen dadurch grundsätzlich
+      keine zusätzlichen Kosten.
+      Preise und Verfügbarkeit können sich ändern.
+      Die abgebildeten Tastaturen sind eigene
+      Illustrationen und keine Originalproduktfotos.
+    </p>
+  </div>
 
 </section>
 </main>
 
 <footer>
-<div class="wrap">
-© PIXELPULSE · Tech & Gaming Picks
-</div>
+  <div class="wrap">
+    © 2026 PIXELPULSE · Gaming Gear & Technology
+  </div>
 </footer>
 
 </body>
