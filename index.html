@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PIXELPULSE – PS5 Konsolen</title>
+  <meta name="description" content="Entdecke und vergleiche die PlayStation 5 Modelle bei PixelPulse.">
+  <title>PixelPulse – PS5 Gaming Auswahl</title>
 
   <style>
     * {
@@ -13,348 +14,267 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #08080d;
-      color: white;
+      background: #080817;
+      color: #ffffff;
+      min-height: 100vh;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 8%;
-      border-bottom: 1px solid #24202e;
-      background: #0b0a11;
-    }
+    /* Hintergrund */
 
-    .logo {
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .logo span {
-      color: #ff35b8;
-    }
-
-    nav a {
-      color: #ddd;
-      text-decoration: none;
-      margin-left: 25px;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: #ff35b8;
-    }
-
-    .hero {
-      min-height: 440px;
-      padding: 100px 8%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .ps5-section {
+      position: relative;
+      overflow: hidden;
+      padding: 85px 6%;
       background:
-        radial-gradient(ellipse at 20% 30%, #6b176d 0%, transparent 38%),
-        radial-gradient(ellipse at 80% 70%, #172e83 0%, transparent 40%),
-        linear-gradient(135deg, #100817, #090a18 60%, #13091b);
+        radial-gradient(ellipse at 15% 25%,
+          rgba(190, 0, 255, 0.20), transparent 42%),
+        radial-gradient(ellipse at 85% 30%,
+          rgba(0, 90, 255, 0.22), transparent 45%),
+        linear-gradient(135deg, #100c29, #080817 60%, #10102d);
     }
 
-    .hero-label {
-      color: #ff5ac8;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 20px;
+    .ps5-section::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: #a000ff;
+      filter: blur(180px);
+      opacity: 0.13;
+      top: 25%;
+      left: -200px;
+      pointer-events: none;
     }
 
-    .hero h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      font-weight: 900;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: #ff35b8;
-    }
-
-    .hero p {
-      color: #c6bfd0;
-      max-width: 600px;
-      line-height: 1.7;
-      font-size: 16px;
-    }
-
-    .hero-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      border-radius: 8px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      background: linear-gradient(90deg, #ff35b8, #8b45ff);
-      transition: 0.25s;
-    }
-
-    .hero-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px #ff35b855;
-    }
-
-    .products {
-      padding: 75px 8%;
-    }
-
-    .section-heading {
+    .section-header {
+      position: relative;
+      z-index: 1;
       text-align: center;
-      margin-bottom: 45px;
+      margin-bottom: 55px;
     }
 
-    .section-heading h2 {
-      font-size: 36px;
-      margin-bottom: 12px;
+    .section-header .eyebrow {
+      display: inline-block;
+      padding: 8px 17px;
+      border: 1px solid rgba(255, 70, 240, 0.4);
+      border-radius: 30px;
+      background: rgba(190, 0, 255, 0.12);
+      color: #ff70ef;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 18px;
     }
 
-    .section-heading h2 span {
-      color: #ff35b8;
+    .section-header h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin-bottom: 15px;
+      font-weight: 800;
     }
 
-    .section-heading p {
-      color: #aaa3b5;
-      font-size: 14px;
+    .section-header h1 span {
+      background: linear-gradient(90deg, #ff45dc, #7b8dff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
+
+    .section-header p {
+      color: #c1c0dc;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* Produktkarten */
 
     .product-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px;
+      max-width: 1150px;
+      margin: auto;
     }
 
     .product-card {
-      background: #111019;
-      border: 1px solid #292334;
-      border-radius: 17px;
+      position: relative;
       overflow: hidden;
-      transition: 0.3s;
+      border-radius: 22px;
+      background: rgba(29, 29, 68, 0.88);
+      border: 1px solid rgba(139, 104, 255, 0.35);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+      transition: transform 0.35s ease,
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
     }
 
     .product-card:hover {
-      transform: translateY(-7px);
-      border-color: #ff35b8;
-      box-shadow: 0 12px 35px #ff35b81c;
+      transform: translateY(-9px);
+      border-color: rgba(255, 75, 225, 0.8);
+      box-shadow:
+        0 20px 55px rgba(137, 0, 255, 0.2),
+        0 0 25px rgba(255, 0, 200, 0.12);
     }
 
-    .image-area {
-      height: 290px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 25px;
-      overflow: hidden;
+    /* Bildbereich mit Neonhintergrund */
+
+    .product-image {
+      height: 330px;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 45%,
+          rgba(255, 0, 220, 0.72), transparent 55%),
+        linear-gradient(135deg, #32106b, #17154e 75%);
     }
 
-    .image-area::before {
-      content: "";
-      position: absolute;
-      width: 230px;
-      height: 230px;
-      border-radius: 50%;
-      filter: blur(45px);
-      opacity: 0.7;
+    .product-card:nth-child(2) .product-image {
+      background:
+        radial-gradient(circle at 50% 45%,
+          rgba(0, 115, 255, 0.78), transparent 55%),
+        linear-gradient(135deg, #111b69, #101a48 75%);
     }
 
-    .pink {
-      background: linear-gradient(135deg, #35102f, #17102c);
-    }
-
-    .pink::before {
-      background: #ff27a9;
-    }
-
-    .blue {
-      background: linear-gradient(135deg, #101b48, #17102c);
-    }
-
-    .blue::before {
-      background: #315cff;
-    }
-
-    .purple {
-      background: linear-gradient(135deg, #291044, #111020);
-    }
-
-    .purple::before {
-      background: #a23cff;
-    }
-
-    .cyan {
-      background: linear-gradient(135deg, #103c45, #15102b);
-    }
-
-    .cyan::before {
-      background: #00d5e9;
-    }
-
-    .image-area img {
+    .product-image img {
       position: relative;
       z-index: 1;
-      max-width: 100%;
-      max-height: 240px;
+      width: 78%;
+      height: 90%;
       object-fit: contain;
-      border-radius: 8px;
-      transition: 0.3s;
-      mix-blend-mode: multiply;
+      filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.55));
+      transition: transform 0.4s ease;
     }
 
-    .product-card:hover .image-area img {
+    .product-card:hover .product-image img {
       transform: scale(1.06);
     }
 
-    .product-info {
-      padding: 25px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #ff35b81c;
-      color: #ff65c9;
-      border: 1px solid #ff35b84a;
-      padding: 6px 11px;
-      border-radius: 20px;
+    .product-tag {
+      position: absolute;
+      z-index: 2;
+      top: 18px;
+      left: 18px;
+      padding: 8px 13px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #ec36d2, #8c55ff);
+      color: white;
       font-size: 11px;
-      margin-bottom: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    .product-info h3 {
-      font-size: 23px;
-      margin-bottom: 12px;
+    /* Produktinformationen */
+
+    .product-info {
+      padding: 28px;
     }
 
-    .description {
-      color: #aaa3b5;
+    .product-info h2 {
+      font-size: 24px;
+      margin-bottom: 13px;
+    }
+
+    .product-info p {
+      color: #c0bfdc;
       font-size: 14px;
-      line-height: 1.6;
-      min-height: 66px;
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
 
     .features {
       list-style: none;
-      margin: 20px 0;
+      margin-bottom: 25px;
     }
 
     .features li {
-      color: #d8d2df;
-      font-size: 13px;
-      margin: 10px 0;
+      color: #e1dff6;
+      font-size: 14px;
+      margin-bottom: 11px;
     }
 
     .features li::before {
       content: "✓";
-      color: #ff35b8;
+      color: #ff55e5;
       font-weight: bold;
-      margin-right: 9px;
+      margin-right: 10px;
     }
 
-    .price {
-      font-size: 14px;
-      color: #aaa3b5;
-      margin-bottom: 18px;
-    }
+    /* Buttons */
 
-    .price strong {
-      color: white;
-      font-size: 20px;
-    }
-
-    .product-button {
+    .amazon-button {
       display: block;
       width: 100%;
-      padding: 14px;
       text-align: center;
-      color: white;
+      padding: 15px 20px;
+      border-radius: 12px;
       text-decoration: none;
+      color: #ffffff;
       font-weight: bold;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #ff35b8, #853dff);
-      transition: 0.25s;
+      font-size: 15px;
+      background: linear-gradient(90deg, #d629e8, #575cff);
+      box-shadow: 0 5px 20px rgba(180, 30, 255, 0.25);
+      transition: all 0.3s ease;
     }
 
-    .product-button:hover {
-      filter: brightness(1.2);
-      box-shadow: 0 5px 20px #ff35b844;
+    .amazon-button:hover {
+      background: linear-gradient(90deg, #f04bdf, #347dff);
+      box-shadow: 0 0 25px rgba(208, 50, 255, 0.5);
+      transform: scale(1.02);
     }
 
-    .info-section {
-      padding: 60px 8%;
-      background: #100e18;
+    .affiliate-notice {
+      max-width: 850px;
+      margin: 45px auto 0;
       text-align: center;
-    }
-
-    .info-section h2 {
-      font-size: 30px;
-      margin-bottom: 15px;
-    }
-
-    .info-section h2 span {
-      color: #ff35b8;
-    }
-
-    .info-section p {
-      max-width: 700px;
-      margin: auto;
-      color: #aaa3b5;
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 8%;
-      color: #777180;
+      color: #8887a8;
       font-size: 12px;
-      border-top: 1px solid #24202e;
-      line-height: 1.8;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
     }
 
-    footer a {
-      color: #ff65c9;
-      text-decoration: none;
+    .affiliate-notice a {
+      color: #b9a0ff;
     }
 
-    @media (max-width: 750px) {
-      header {
-        padding: 20px 5%;
-        flex-direction: column;
-        gap: 18px;
-      }
+    /* Handy und Tablet */
 
-      nav a {
-        margin: 0 9px;
-      }
-
-      .hero {
-        padding: 75px 6%;
-      }
-
-      .products {
-        padding: 55px 5%;
+    @media (max-width: 760px) {
+      .ps5-section {
+        padding: 60px 5%;
       }
 
       .product-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
       }
 
-      .image-area {
-        height: 260px;
+      .product-image {
+        height: 290px;
+      }
+
+      .product-info {
+        padding: 23px;
+      }
+
+      .section-header {
+        margin-bottom: 35px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .product-image {
+        height: 240px;
+      }
+
+      .product-info h2 {
+        font-size: 21px;
       }
     }
   </style>
@@ -362,37 +282,17 @@
 
 <body>
 
-  <header>
-    <div class="logo">PIXEL<span>PULSE</span></div>
+  <section class="ps5-section">
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#konsolen">PS5 Konsolen</a>
-      <a href="#info">Über uns</a>
-    </nav>
-  </header>
+    <div class="section-header">
+      <div class="eyebrow">PIXELPULSE GAMING</div>
 
-  <section class="hero" id="home">
-    <div class="hero-label">PIXELPULSE GAMING</div>
+      <h1>Unsere <span>PS5 Auswahl</span></h1>
 
-    <h1>Finde deine <span>PS5.</span></h1>
-
-    <p>
-      Entdecke die verschiedenen PlayStation 5 Modelle.
-      Vergleiche die Konsolen und finde das passende
-      Gaming-Erlebnis für dich.
-    </p>
-
-    <a href="#konsolen" class="hero-button">
-      Konsolen entdecken
-    </a>
-  </section>
-
-  <section class="products" id="konsolen">
-
-    <div class="section-heading">
-      <h2>Unsere <span>PS5 Auswahl</span></h2>
-      <p>Entdecke die verschiedenen Modelle der PlayStation 5.</p>
+      <p>
+        Entdecke die verschiedenen PlayStation 5 Modelle.
+        Vergleiche die Konsolen und finde dein perfektes Gaming-Erlebnis.
+      </p>
     </div>
 
     <div class="product-grid">
@@ -400,197 +300,116 @@
       <!-- PS5 STANDARD -->
 
       <article class="product-card">
-        <div class="image-area pink">
+
+        <div class="product-image">
+          <span class="product-tag">DISC EDITION</span>
+
           <img
-            https://gmedia.playstation.com/is/image/SIEPDC/ps5-disc-edition-box-image-block-01-en-02apr25?$100px--t$
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/PlayStation_5_and_DualSense_with_transparent_background.png"
+            alt="PlayStation 5 Standard mit DualSense Controller"
+            loading="lazy"
           >
         </div>
 
         <div class="product-info">
-          <span class="tag">STANDARD EDITION</span>
 
-          <h3>PlayStation 5</h3>
+          <h2>PlayStation 5</h2>
 
-          <p class="description">
+          <p>
             Die klassische PS5 mit Disc-Laufwerk.
-            Spiele auf Blu-ray-Discs oder lade deine
+            Spiele auf Blu-ray-Disc oder lade deine
             Lieblingsspiele digital herunter.
           </p>
 
           <ul class="features">
-            <li>1 TB Speicher</li>
-            <li>Disc-Laufwerk integriert</li>
-            <li>PS5 und PS4 Spiele</li>
+            <li>Ultra-HD Blu-ray-Laufwerk</li>
+            <li>Beeindruckende 4K-Grafik</li>
+            <li>Schnelle SSD-Technologie</li>
+            <li>Immersives Gaming mit DualSense</li>
           </ul>
 
-          <div class="price">
-            Preis: <strong>Beim Händler prüfen</strong>
-          </div>
-
           <a
-            class="product-button"
-            href="DEIN_AFFILIATE_LINK_1"
+            class="amazon-button"
+            href="https://www.amazon.de/s?k=playstation+5+disc+edition"
             target="_blank"
-            rel="noopener"
+            rel="sponsored nofollow noopener"
           >
-            Angebot ansehen
+            Bei Amazon ansehen →
           </a>
+
         </div>
       </article>
+
 
       <!-- PS5 SLIM -->
 
       <article class="product-card">
-        <div class="image-area blue">
+
+        <div class="product-image">
+          <span class="product-tag">SLIM EDITION</span>
+
           <img
-          https://gmedia.playstation.com/is/image/SIEPDC/ps5-disc-edition-box-image-block-01-en-02apr25?$100px--t$
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Playstation_5_mod%C3%A8le_slim_%28%C3%A9dition_standard_avec_lecteur_de_disque_amovible.png"
+            alt="PlayStation 5 Slim mit Disc-Laufwerk"
+            loading="lazy"
           >
         </div>
 
         <div class="product-info">
-          <span class="tag">SLIM EDITION</span>
 
-          <h3>PlayStation 5 Slim</h3>
+          <h2>PlayStation 5 Slim</h2>
 
-          <p class="description">
+          <p>
             Die kompaktere Version der PS5.
-            Sie bietet starke Leistung in einem
-            kleineren Gehäuse.
+            Sie bietet starke Gaming-Leistung in einem
+            platzsparenden Design.
           </p>
 
           <ul class="features">
-            <li>1 TB Speicher</li>
-            <li>Kompakteres Design</li>
-            <li>Disc-Laufwerk integriert</li>
+            <li>Kompakteres Konsolendesign</li>
+            <li>4K-Gaming und schnelle Ladezeiten</li>
+            <li>Abnehmbares Disc-Laufwerk</li>
+            <li>Mehr interner Speicher als das ursprüngliche Modell</li>
           </ul>
 
-          <div class="price">
-            Preis: <strong>Beim Händler prüfen</strong>
-          </div>
-
           <a
-            class="product-button"
-            href="DEIN_AFFILIATE_LINK_2"
+            class="amazon-button"
+            href="https://www.amazon.de/s?k=playstation+5+slim"
             target="_blank"
-            rel="noopener"
+            rel="sponsored nofollow noopener"
           >
-            Angebot ansehen
+            Bei Amazon ansehen →
           </a>
-        </div>
-      </article>
 
-      <!-- PS5 SLIM DIGITAL -->
-
-      <article class="product-card">
-        <div class="image-area purple">
-          <img
-            https://gmedia.playstation.com/is/image/SIEPDC/ps5-digital-edition-box-image-block-01-en-02apr25?$100px--t$
-          >
-        </div>
-
-        <div class="product-info">
-          <span class="tag">DIGITAL EDITION</span>
-
-          <h3>PS5 Slim Digital</h3>
-
-          <p class="description">
-            Für alle, die ihre Spiele digital kaufen
-            und herunterladen möchten. Ohne fest
-            eingebautes Disc-Laufwerk.
-          </p>
-
-          <ul class="features">
-            <li>1 TB Speicher</li>
-            <li>Kein Disc-Laufwerk enthalten</li>
-            <li>Digitale Spiele aus dem PS Store</li>
-          </ul>
-
-          <div class="price">
-            Preis: <strong>Beim Händler prüfen</strong>
-          </div>
-
-          <a
-            class="product-button"
-            href="DEIN_AFFILIATE_LINK_3"
-            target="_blank"
-            rel="noopener"
-          >
-            Angebot ansehen
-          </a>
-        </div>
-      </article>
-
-      <!-- PS5 PRO -->
-
-      <article class="product-card">
-        <div class="image-area cyan">
-          <img
-            https://gmedia.playstation.com/is/image/SIEPDC/PlayStation5-ProConsole-01-16x9-01-28feb26$en?$native--t$
-          >
-        </div>
-
-        <div class="product-info">
-          <span class="tag">PREMIUM EDITION</span>
-
-          <h3>PlayStation 5 Pro</h3>
-
-          <p class="description">
-            Das leistungsstärkere PS5-Modell.
-            Für verbesserte Grafik und ein besonders
-            hochwertiges Spielerlebnis.
-          </p>
-
-          <ul class="features">
-            <li>2 TB Speicher</li>
-            <li>Verbesserte Grafik</li>
-            <li>Erweitertes Raytracing</li>
-          </ul>
-
-          <div class="price">
-            Preis: <strong>Beim Händler prüfen</strong>
-          </div>
-
-          <a
-            class="product-button"
-            href="DEIN_AFFILIATE_LINK_4"
-            target="_blank"
-            rel="noopener"
-          >
-            Angebot ansehen
-          </a>
         </div>
       </article>
 
     </div>
+
+    <div class="affiliate-notice">
+      <p>
+        Hinweis: PixelPulse ist eine unabhängige Empfehlungswebsite.
+        Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.
+        Für dich entstehen dadurch keine zusätzlichen Kosten.
+      </p>
+
+      <p style="margin-top: 12px;">
+        PS5 Standard-Bild:
+        <a href="https://commons.wikimedia.org/wiki/File:PlayStation_5_and_DualSense_with_transparent_background.png"
+           target="_blank" rel="noopener">
+          Wikimedia Commons
+        </a>
+        (CC BY-SA 4.0, bearbeitetes Freistellbild).
+        PS5 Slim-Bild:
+        <a href="https://commons.wikimedia.org/wiki/File:Playstation_5_mod%C3%A8le_slim_%28%C3%A9dition_standard_avec_lecteur_de_disque_amovible.png"
+           target="_blank" rel="noopener">
+          Wikimedia Commons
+        </a>
+        (CC0).
+      </p>
+    </div>
+
   </section>
-
-  <section class="info-section" id="info">
-    <h2>Willkommen bei <span>PIXELPULSE</span></h2>
-
-    <p>
-      Wir helfen dir dabei, passende Gaming-Produkte zu entdecken.
-      Vergleiche verschiedene PS5-Modelle und finde heraus,
-      welche Konsole am besten zu deinen Anforderungen passt.
-      Preise und Verfügbarkeit können sich jederzeit ändern.
-    </p>
-  </section>
-
-  <footer>
-    <p>
-      © 2026 PIXELPULSE – Alle Rechte vorbehalten.
-    </p>
-
-    <p>
-      Einige Links können Affiliate-Links sein.
-      Wenn du darüber einkaufst, können wir eine Provision erhalten.
-      Für dich entstehen dadurch keine zusätzlichen Kosten.
-    </p>
-
-    <p>
-      PlayStation und PS5 sind Marken von Sony Interactive Entertainment.
-      PIXELPULSE ist keine offizielle PlayStation-Website.
-    </p>
-  </footer>
 
 </body>
 </html>
